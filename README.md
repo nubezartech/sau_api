@@ -5,8 +5,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/orgs/sau_api/sau_api/pulls)
-[![GitHub open-pull-requests](https://badgen.net/github/open-prs/Naereen/Strapdown.js)](pulls?q=is%3Aopen)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/orgs/sau_api/sau_api/pulls?q=is%3Apr+is%3Aclosed)
+[![GitHub open-pull-requests](https://badgen.net/github/open-prs/Naereen/Strapdown.js)](pulls?q=is%3Aopen+is%3Apr)
 
 
 
