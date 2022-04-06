@@ -53,10 +53,6 @@ cp .env.example .env
 ```
 Configura las variables de entorno.
 
-## 🚀 Despliegue al servidor <a name = "deployment"></a>
-
-Una vez desarrolladas las features e incorporadas *(push)* a la rama **"dev"**, se ejecutaran los test. Si estos se ejecutan de forma correcta y no devuelven ningún errror, se creará una PullRequest a **"main"** mediante GitHub Actions. Ésta quedará pendiente de revisión y una vez aprovada se incorporarán los cambios a la rama principal *("main")*. A su vez, se desplegará el proyecto a través de GitHub Actions y SSH en el servidor web de producción.
-
 
 ## ✍️ Authors <a name = "authors"></a>
 
