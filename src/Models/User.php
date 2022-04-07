@@ -7,7 +7,7 @@
 *
 */
 require "Model.php";
-class Users extends Model {
+class User extends Model {
     private $table = "users";
 
     public function getById($id) {
