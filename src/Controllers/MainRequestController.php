@@ -1,12 +1,15 @@
 <?php
 require_once "Controllers/UsersController.php";
+require_once "Controllers/UsersRightsController.php";
 require_once "Views/Json.php";
 
 class MainRequestController{
     private $usersController;
+    private $usersRightsController;
     public function __construct()
     {
         $this->usersController = new UsersController();
+        $this->usersRightsController = new UsersRightsController();
 
 
         if (isset($_GET["resource"]) & !empty($_GET["resource"])) {
@@ -27,9 +30,12 @@ class MainRequestController{
 
     public function doResource()
     {
+        //UsersRights
         if ($_GET["resource"] == "users") {
             $to_print =$this->usersFunctions($_GET["action"]);
-        }else {
+        }elseif ($_GET["resource"] == "usersRights") {
+            $to_print =$this->usersRightsFunctions($_GET["action"]);
+        }else{
             $to_print = array("Error" => "Resource not valid.");
         }
         Json::view($to_print);
@@ -38,6 +44,14 @@ class MainRequestController{
     {
         if ($this->action == "getAll") {
             return $this->usersController->getAll();
+        } else {
+            return array("Error" => "Action not valid.");
+        }
+    }
+    private function usersRightsFunctions($action)
+    {
+        if ($this->action == "getAllByUserId") {
+            return $this->usersRightsController->getAllByUserId($_GET["user_id"]);
         } else {
             return array("Error" => "Action not valid.");
         }
