@@ -1,4 +1,4 @@
-name: Create PullRequest (to Main) when do push on Dev branch.
+name: CI_dev
 on:
   push:
     branches:
