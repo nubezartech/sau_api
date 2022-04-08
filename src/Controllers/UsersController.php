@@ -19,9 +19,10 @@ class UsersController{
     public function getByUserId($user_id){
         return $this->userModel->getById($user_id);
     }
-    public function getAccessAppRightsByUserId($user_id){
-        $this->userModel->getAccessAppRightsByUserId($user_id);
-        $rights_data=array();
-        return $rights_data;
+    public function getAllByClientId($client_id){
+        return $this->userModel->getAllByClientId($client_id);
+    }
+    public function getActivesByClientId($client_id){
+        return $this->userModel->getActivesByClientId($client_id);
     }
 }
