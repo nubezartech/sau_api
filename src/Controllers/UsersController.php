@@ -16,5 +16,12 @@ class UsersController{
     public function getAll(){
         return $this->userModel->getAll();
     }
-    
+    public function getByUserId($user_id){
+        return $this->userModel->getById($user_id);
+    }
+    public function getAccessAppRightsByUserId($user_id){
+        $this->userModel->getAccessAppRightsByUserId($user_id);
+        $rights_data=array();
+        return $rights_data;
+    }
 }
