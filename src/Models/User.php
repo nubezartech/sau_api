@@ -23,7 +23,7 @@ class User extends Model
                 "user_id" => $row['user_id'],
                 "user_username" => $row['user_username'],
                 "user_type_id" => $row['user_type'],
-                "user_status_id" => $row['user_status'],,
+                "user_status_id" => $row['user_status'],
                 "user_status_name" => $row['us_name'],
                 "user_client" => $row['user_parent'],
                 "user_phone" => $row['user_phone'],
