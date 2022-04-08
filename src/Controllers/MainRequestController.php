@@ -44,7 +44,9 @@ class MainRequestController{
     {
         if ($this->action == "getAll") {
             return $this->usersController->getAll();
-        } else {
+        }else if($this->action == "getUserById") {
+            return $this->usersController->getByUserId($_GET["user_id"]);
+        }else{
             return array("Error" => "Action not valid.");
         }
     }

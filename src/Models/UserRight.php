@@ -6,14 +6,14 @@
 * @author http://www.nubezar.tech
 *
 */
-require "Model.php";
+require_once "Model.php";
 class UserRight extends Model {
-    private $table = "sau_service";
+    private $table = "sau_services";
 
     public function getAccessAppRightsByUserId($user_id){
         $sql = "SELECT * FROM $this->table ".
-        "INNER JOIN comercial_park_items ON sau_service.saus_cpitem=comercial_park_items.cpi_id ".
-        "INNER JOIN sau_roles ON sau_service.saus_rol=sau_roles.saur_id ".
+        "INNER JOIN comercial_park_items ON $this->table.saus_cpitem=comercial_park_items.cpi_id ".
+        "INNER JOIN sau_roles ON $this->table.saus_rol=sau_roles.saur_id ".
         "WHERE saus_user='".$user_id."'";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {

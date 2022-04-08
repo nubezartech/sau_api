@@ -6,40 +6,62 @@
 * @author http://www.nubezar.tech
 *
 */
-require "Model.php";
+require_once "Model.php";
 class User extends Model {
     private $table = "users";
 
     public function getById($id) {
-        $sql = "SELECT * FROM  $this->table WHERE user_id = '" . $id . "'";
+        $sql = "SELECT * FROM  $this->table ".
+        "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ".
+        "WHERE user_id = '" . $id . "'";
         if ($result = $this->newsql($sql)) {
             $row = mysqli_fetch_array($result);
             return array("user_id" => $row['user_id'],
-                        "user_username" => $row['user_username']);
+                         "user_username" => $row['user_username'],
+                         "user_type_id" => $row['user_type'],
+                         "user_type_name" => $row['us_name'],
+                         "user_parent" => $row['user_parent'],
+                         "user_phone" => $row['user_phone'],
+                         "user_email" => $row['user_email'],
+                         "user_creation_date" => $row['user_creation_date']);
         } else {
             return false;
         }
         $this->close();
     }
     public function getByUsername($username) {
-        $sql = "SELECT * FROM  $this->table
-                WHERE user_username = '" . $username . "'";
+        $sql = "SELECT * FROM  $this->table ".
+        "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ".
+                "WHERE user_username = '" . $username . "'";
         if ($result = $this->newsql($sql)) {
             $row = mysqli_fetch_array($result);
             return array("user_id" => $row['user_id'],
-                         "user_username" => $row['user_username']);
+                         "user_username" => $row['user_username'],
+                         "user_type_id" => $row['user_type'],
+                         "user_type_name" => $row['us_name'],
+                         "user_parent" => $row['user_parent'],
+                         "user_phone" => $row['user_phone'],
+                         "user_email" => $row['user_email'],
+                         "user_creation_date" => $row['user_creation_date']);
         } else {
             return false;
         }
         $this->close();
     }
     public function getAll() {
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM  $this->table ".
+        "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
 
                 $item_data[] = array("user_id" => $row['user_id'],
-                                     "user_username" => $row['user_username']);
+                "user_username" => $row['user_username'],
+                "user_type_id" => $row['user_type'],
+                "user_type_name" => $row['us_name'],
+                "user_parent" => $row['user_parent'],
+                "user_phone" => $row['user_phone'],
+                "user_email" => $row['user_email'],
+                "user_creation_date" => $row['user_creation_date']);
             }
             return $item_data;
         } else {
@@ -47,17 +69,43 @@ class User extends Model {
         }
         $this->close();
     }
-    public function getAccessAppRightsByUserId($user_id){
-        $sql = "SELECT * FROM sau_service ".
-        "INNER JOIN comercial_park_items ON sau_service.saus_cpitem=comercial_park_items.cpi_id ".
-        "INNER JOIN sau_roles ON sau_service.saus_rol=sau_roles.saur_id ".
-        "WHERE saus_user='".$user_id."'";
+    public function getAllPublic() {
+        $sql = "SELECT * FROM  $this->table ".
+        "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ".
+        "WHERE user_type<>99";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
 
-                $item_data[] = array("sau_service" => $row['cpi_service'],
-                                     "saus_status" => $row['saus_status'],
-                                     "saus_rol" => $row['saur_name']);
+                $item_data[] = array("user_id" => $row['user_id'],
+                "user_username" => $row['user_username'],
+                "user_type_id" => $row['user_type'],
+                "user_type_name" => $row['us_name'],
+                "user_parent" => $row['user_parent'],
+                "user_phone" => $row['user_phone'],
+                "user_email" => $row['user_email'],
+                "user_creation_date" => $row['user_creation_date']);
+            }
+            return $item_data;
+        } else {
+            return false;
+        }
+        $this->close();
+    }
+    public function getAllByClientId($client_id) {
+        $sql = "SELECT * FROM  $this->table ".
+        "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ".
+        " WHERE user_type=11 AND user_parent=".$client_id;
+        if ($result = $this->newsql($sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+
+                $item_data[] = array("user_id" => $row['user_id'],
+                "user_username" => $row['user_username'],
+                "user_type_id" => $row['user_type'],
+                "user_type_name" => $row['us_name'],
+                "user_client" => $row['user_parent'],
+                "user_phone" => $row['user_phone'],
+                "user_email" => $row['user_email'],
+                "user_creation_date" => $row['user_creation_date']);
             }
             return $item_data;
         } else {
