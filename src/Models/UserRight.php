@@ -18,11 +18,23 @@ class UserRight extends Model {
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
 
-                $item_data[] = array("sau_service" => $row['cpi_service'],
+                $item_data[] = array("saus_id" => $row['saus_id'],
+                                     "saus_service_id" => $row['cpi_service'],
                                      "saus_status" => $row['saus_status'],
                                      "saus_rol" => $row['saur_name']);
             }
             return $item_data;
+        } else {
+            return false;
+        }
+        $this->close();
+    }
+
+    public function addNewRightToUser($user_id, $cpitem_id){
+        $sql = "INSERT INTO $this->table (saus_user, saus_cpitem) VALUES ('".$user_id."','".$cpitem_id."')";
+        if ($this->newsql($sql)) {
+            
+            return $this->last_id();
         } else {
             return false;
         }

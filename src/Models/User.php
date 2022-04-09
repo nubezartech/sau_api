@@ -114,7 +114,6 @@ class User extends Model
             " WHERE user_type=11 AND user_parent=" . $client_id;
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
-
                 $item_data[] = array(
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],
@@ -140,7 +139,6 @@ class User extends Model
             " WHERE user_type=11 AND user_parent=" . $client_id . " AND user_status=1";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
-
                 $item_data[] = array(
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],

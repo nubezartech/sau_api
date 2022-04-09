@@ -1,15 +1,18 @@
 <?php
 require_once "Controllers/UsersController.php";
 require_once "Controllers/UsersRightsController.php";
+require_once "Controllers/CPItemsController.php";
 require_once "Views/Json.php";
 
 class MainRequestController{
     private $usersController;
     private $usersRightsController;
+    private $cpitemsRightsController;
     public function __construct()
     {
         $this->usersController = new UsersController();
         $this->usersRightsController = new UsersRightsController();
+        $this->cpitemsRightsController = new CPItemsController();
 
 
         if (isset($_GET["resource"]) & !empty($_GET["resource"])) {
@@ -35,6 +38,8 @@ class MainRequestController{
             $to_print =$this->usersFunctions($_GET["action"]);
         }elseif ($_GET["resource"] == "usersRights") {
             $to_print =$this->usersRightsFunctions($_GET["action"]);
+        }elseif ($_GET["resource"] == "usersRights") {
+            $to_print =$this->cpitemsFunctions($_GET["action"]);
         }else{
             $to_print = array("Error" => "Resource not valid.");
         }
@@ -62,5 +67,12 @@ class MainRequestController{
             return array("Error" => "Action not valid.");
         }
     }
-
+    private function cpitemsFunctions($action)
+    {
+        if ($this->action == "getById") {
+            return $this->cpitemsRightsController->GetById($_GET["cpi_id"]);
+        }else {
+            return array("Error" => "Action not valid.");
+        }
+    }
 }
