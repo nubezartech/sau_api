@@ -71,6 +71,10 @@ class MainRequestController{
     {
         if ($this->action == "getById") {
             return $this->cpitemsRightsController->GetById($_GET["cpi_id"]);
+        }elseif ($this->action == "getAllByClientId") {
+            return $this->cpitemsRightsController->getAllByClientId($_GET["client_id"]);
+        }elseif ($this->action == "getActivesByClientId") {
+            return $this->cpitemsRightsController->getActivesByClientId($_GET["client_id"]);
         }else {
             return array("Error" => "Action not valid.");
         }

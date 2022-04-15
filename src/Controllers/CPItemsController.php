@@ -16,5 +16,11 @@ class CPItemsController{
     public function getById($cpi_id){
         return $this->cpitemModel->getById($cpi_id);
     }
+    public function getAllByClientId($client_id){
+        return $this->cpitemModel->getAllByClientId($client_id);
+    }
+    public function getActivesByClientId($client_id){
+        return $this->cpitemModel->getActivesByClientId($client_id);
+    }
 
 }

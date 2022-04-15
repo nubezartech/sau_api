@@ -17,11 +17,11 @@ class UserRight extends Model {
         "WHERE saus_user='".$user_id."'";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
-
                 $item_data[] = array("saus_id" => $row['saus_id'],
-                                     "saus_service_id" => $row['cpi_service'],
+                                     "saus_cpitem" => $row['saus_cpitem'],
                                      "saus_status" => $row['saus_status'],
-                                     "saus_rol" => $row['saur_name']);
+                                     "saus_rol_id" => $row['saus_rol'],
+                                     "saus_rol_name" => $row['saur_name']);
             }
             return $item_data;
         } else {
