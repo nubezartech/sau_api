@@ -23,7 +23,7 @@ class UsersRightsController
         $user_right_sau = $this->userRightModel->getAccessAppRightsByUserId($user_id);
         $cpitemsController = new CPItemsController();
 
-        
+
         while ($iter < count($user_right_sau)) {
             $service_data = $cpitemsController->getById($user_right_sau[$iter]["saus_cpitem"]);
 
@@ -42,14 +42,19 @@ class UsersRightsController
     }
     public function addNewRightToUser($user_id, $cpitem_id)
     {
-        if($this->userRightModel->addNewRightToUser($user_id, $cpitem_id)){
-            return array("resource"=>"user_rights",
-                         "action"=>"create",
-                         "result"=>"ok");
-        }else{
-            return array("resource"=>"user_rights",
-                         "action"=>"create",
-                         "result"=>"error");
+
+        if ($this->userRightModel->addNewRightToUser($user_id, $cpitem_id)) {
+            return array(
+                "resource" => "user_rights",
+                "action" => "create",
+                "result" => "ok"
+            );
+        } else {
+            return array(
+                "resource" => "user_rights",
+                "action" => "create",
+                "result" => "error"
+            );
         }
     }
 }
