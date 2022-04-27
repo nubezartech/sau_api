@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Sistema de Acceso Unificado -> SAU_API
+ *
+ * @author Adan Nahir Abad Mora 
+ * @author Soluciones Informáticas NubezarTech [http://www.nubezar.tech]
+ *
+ */
 require_once "Controllers/UsersController.php";
 require_once "Controllers/UsersRightsController.php";
 require_once "Controllers/CPItemsController.php";
@@ -34,7 +42,6 @@ class MainRequestController
 
     public function doResource()
     {
-        //UsersRights
         if ($_GET["resource"] == "users") {
             $to_print = $this->usersFunctions($_GET["action"]);
         } elseif ($_GET["resource"] == "usersRights") {

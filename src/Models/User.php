@@ -3,8 +3,8 @@
 /**
  * Sistema de Acceso Unificado -> SAU_API
  *
- * @author Adan Nahir Abad Mora [Soluciones Informáticas NubezarTech]
- * @author http://www.nubezar.tech
+ * @author Adan Nahir Abad Mora 
+ * @author Soluciones Informáticas NubezarTech [http://www.nubezar.tech]
  *
  */
 require_once "Model.php";
