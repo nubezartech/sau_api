@@ -16,6 +16,7 @@ class User extends Model
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id " .
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
             "WHERE user_id = '" . $id . "'";
         if ($result = $this->newsql($sql)) {
             $row = mysqli_fetch_array($result);
@@ -23,6 +24,7 @@ class User extends Model
                 "user_id" => $row['user_id'],
                 "user_username" => $row['user_username'],
                 "user_type_id" => $row['user_type'],
+                "user_type_name" => $row['ut_name'],
                 "user_status_id" => $row['user_status'],
                 "user_status_name" => $row['us_name'],
                 "user_client" => $row['user_parent'],
@@ -39,6 +41,7 @@ class User extends Model
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id " .
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
             "WHERE user_username = '" . $username . "'";
         if ($result = $this->newsql($sql)) {
             $row = mysqli_fetch_array($result);
@@ -46,6 +49,7 @@ class User extends Model
                 "user_id" => $row['user_id'],
                 "user_username" => $row['user_username'],
                 "user_type_id" => $row['user_type'],
+                "user_type_name" => $row['ut_name'],
                 "user_status_id" => $row['user_status'],
                 "user_status_name" => $row['us_name'],
                 "user_client" => $row['user_parent'],
@@ -61,6 +65,7 @@ class User extends Model
     public function getAll()
     {
         $sql = "SELECT * FROM  $this->table " .
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id ";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
@@ -68,6 +73,7 @@ class User extends Model
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],
                     "user_type_id" => $row['user_type'],
+                    "user_type_name" => $row['ut_name'],
                     "user_status_id" => $row['user_status'],
                     "user_status_name" => $row['us_name'],
                     "user_client" => $row['user_parent'],
@@ -82,17 +88,19 @@ class User extends Model
         }
         $this->close();
     }
-    public function getAllPublic()
+    public function getAllByTypeId($user_type)
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id " .
-            "WHERE user_type<>99";
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
+            "WHERE user_type=".$user_type;
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
                 $item_data[] = array(
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],
                     "user_type_id" => $row['user_type'],
+                    "user_type_name" => $row['ut_name'],
                     "user_status_id" => $row['user_status'],
                     "user_status_name" => $row['us_name'],
                     "user_client" => $row['user_parent'],
@@ -111,6 +119,7 @@ class User extends Model
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id " .
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
             " WHERE user_type=11 AND user_parent=" . $client_id;
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
@@ -118,6 +127,7 @@ class User extends Model
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],
                     "user_type_id" => $row['user_type'],
+                    "user_type_name" => $row['ut_name'],
                     "user_status_id" => $row['user_status'],
                     "user_status_name" => $row['us_name'],
                     "user_client" => $row['user_parent'],
@@ -136,6 +146,7 @@ class User extends Model
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN user_statuses ON $this->table.user_status=user_statuses.us_id " .
+            "INNER JOIN users_types ON $this->table.user_type=users_types.ut_id " .
             " WHERE user_type=11 AND user_parent=" . $client_id . " AND user_status=1";
         if ($result = $this->newsql($sql)) {
             while ($row = mysqli_fetch_array($result)) {
@@ -143,6 +154,7 @@ class User extends Model
                     "user_id" => $row['user_id'],
                     "user_username" => $row['user_username'],
                     "user_type_id" => $row['user_type'],
+                    "user_type_name" => $row['ut_name'],
                     "user_status_id" => $row['user_status'],
                     "user_status_name" => $row['us_name'],
                     "user_client" => $row['user_parent'],

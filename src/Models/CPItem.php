@@ -52,7 +52,7 @@ class CPItem extends Model
         }
         $this->close();
     }
-    public function getActivesByClintId($client_id)
+    public function getActivesByClientId($client_id)
     {
         $sql = "SELECT * FROM  $this->table " .
             "INNER JOIN services ON $this->table.cpi_service=services.service_id " .
