@@ -1,11 +1,12 @@
 <?php
+
 /**
-* Sistema de Acceso Unificado -> SAU_API
-*
-* @author Adan Nahir Abad Mora [Soluciones Informáticas NubezarTech]
-* @author http://www.nubezar.tech
-*
-*/
+ * Sistema de Acceso Unificado -> SAU_API
+ *
+ * @author Adan Nahir Abad Mora 
+ * @author Soluciones Informáticas NubezarTech [http://www.nubezar.tech]
+ *
+ */
 class Model{
     private $db_host;
     private $db_user;

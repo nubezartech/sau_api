@@ -53,6 +53,12 @@ cp .env.example .env
 ```
 Configura las variables de entorno.
 
+# Endpoints <a name = "endpoints"></a>
+- [Usuarios](#users)
+- [Permisos](#users_rights)
+
+
+## Permisos <a name = "users_rights"></a>
 
 ## ✍️ Authors <a name = "authors"></a>
 
