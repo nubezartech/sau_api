@@ -19,7 +19,6 @@
 
 - [Instalación](#installation)
 - [Configuración del entorno](#enviroment)
-- [Despliegue](#deployment)
 - [Author](#author)
 
 
@@ -54,10 +53,14 @@ cp .env.example .env
 Configura las variables de entorno.
 
 # Endpoints <a name = "endpoints"></a>
+- [Clientes](#clients)
+- [Parque comercial](#commercial_park)
 - [Usuarios](#users)
 - [Permisos](#users_rights)
 
-
+## Clientes <a name = "clients"></a>
+## Parque comercial <a name = "commercial_park"></a>
+## Usuarios <a name = "users"></a>
 ## Permisos <a name = "users_rights"></a>
 
 ## ✍️ Authors <a name = "authors"></a>
