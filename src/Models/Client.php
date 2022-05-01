@@ -40,7 +40,7 @@ class Client extends Model
         }
         $this->close();
     }
-
+/*
     public function updateDocTypeById($client_id, $client_doc_type_id)
     {
         $sql = "UPDATE $this->table SET client_doc_type='.$client_doc_type_id.' WHERE client_id=" . $client_id;
@@ -51,7 +51,7 @@ class Client extends Model
         }
         $this->close();
     }
-
+*/
     public function updateNameById($client_id, $client_name)
     {
         $sql = "UPDATE $this->table SET client_name='.$client_name.' WHERE client_id=" . $client_id;
@@ -72,4 +72,25 @@ class Client extends Model
         }
         $this->close();
     }
+    public function updatePhoneById($client_id, $client_phone)
+    {
+        $sql = "UPDATE $this->table SET client_phone='.$client_phone.' WHERE client_id=" . $client_id;
+        if ($this->newsql($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+        $this->close();
+    }
+    public function updateEmailById($client_id, $client_email)
+    {
+        $sql = "UPDATE $this->table SET client_phone='.$client_email.' WHERE client_id=" . $client_id;
+        if ($this->newsql($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+        $this->close();
+    }
+    
 }

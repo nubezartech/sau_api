@@ -46,4 +46,14 @@ class UserRight extends Model
         }
         $this->close();
     }
+    public function updateStatusById($user_right_id, $new_status)
+    {
+        $sql = "UPDATE $this->table SET saus_status='.$new_status.' WHERE saus_id=" . $user_right_id;
+        if ($this->newsql($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+        $this->close();
+    }
 }
