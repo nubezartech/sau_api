@@ -49,12 +49,26 @@ class UsersRightsController
                 "action" => "create",
                 "result" => "ok"
             );
-        } else {
+        }
+        return array(
+            "resource" => "user_rights",
+            "action" => "create",
+            "result" => "error"
+        );
+    }
+    public function updateStatusById($user_right_id, $new_status)
+    {
+        if ($this->userRightModel->updateStatusById($user_right_id, $new_status)) {
             return array(
                 "resource" => "user_rights",
-                "action" => "create",
-                "result" => "error"
+                "action" => "update",
+                "result" => "ok"
             );
         }
+        return array(
+            "resource" => "user_rights",
+            "action" => "update",
+            "result" => "error"
+        );
     }
 }
