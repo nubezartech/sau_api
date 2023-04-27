@@ -24,23 +24,20 @@
 
 ## 🔧 Instalación <a name = "installation"></a>
 
-Clona el repositorio en tu maquina local.
+Descaga el instalador PS1 o SH (según el SO de tu máquina). 
+
+PowerShell
 ```
-git clone https://github.com/orgs/nubezartech/sau_api.git
+wget https://raw.githubusercontent.com/nubezartech/sau_api/main/SAU_iPro.ps1 -O SAU_iPro.ps1
+.\SAU_iPro.ps1
 ```
 
-Accede al directorio del proyecto.
+Shell
 ```
-cd sau_api
+wget https://raw.githubusercontent.com/nubezartech/sau_api/main/SAU_iPro.ps1 -O SAU_iPro.sh
+.\SAU_iPro.sh
 ```
-Accede al directorio del código.
-```
-cd src
-```   
-Instala las librerias y dependencias mediante composer y npm.
-```
-composer install
-```
+
 
 ## ⛏️ Configura en entorno <a name = "enviroment"></a>
 
