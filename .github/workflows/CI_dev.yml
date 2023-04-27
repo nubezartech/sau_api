@@ -16,4 +16,4 @@ jobs:
         github_token: ${{ secrets.ACCES_GITHUB_TOKEN }}
         pr_title: "Pulling ${{ github.ref }} into main from a Push on Dev branch."
         pr_body: ":crown: *An automated PR*"
-        pr_reviewer: "aabadmo4"    
+   
